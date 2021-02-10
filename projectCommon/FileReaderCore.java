@@ -42,16 +42,14 @@ public class FileReaderCore {
 	 * ファイル内を読み込む為のテンプレート系メソッドです<br>
 	 * 引数に実際の処理をラムダ式で記述して使用します。
 	 *
-	 * @param textLine
-	 *            readLine()から出力した文字列の引数を基準とした処理を記述する。
+	 * @param textLine readLine()から出力した文字列の引数を基準とした処理を記述する。
 	 * @throws UnsupportedClassVersionError
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
 	public void start(Function<String, Boolean> textLine) {
 
-		try (BufferedReader fileReader = new BufferedReader(
-				new InputStreamReader(new FileInputStream(file), encode))) {
+		try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encode))) {
 			while (ifNull(fileReader.readLine(), textLine))
 				;
 		} catch (UnsupportedEncodingException e) {
@@ -70,10 +68,8 @@ public class FileReaderCore {
 	 * StartメソッドでreadLine()で読み込んだ文字列がNullかどうかを判定してNullでない場合は<br>
 	 * ラムダ式で実装した処理で処理を開始します。
 	 * 
-	 * @param lineString
-	 *            readLine()で読み込んだString型テキスト
-	 * @param textLine
-	 *            関数型インターフェースで定義したMethod
+	 * @param lineString readLine()で読み込んだString型テキスト
+	 * @param textLine   関数型インターフェースで定義したMethod
 	 * @return 文字列がない場合はFalse、それ以外は関数型インターフェースで定義した処理で決定する。
 	 */
 	private boolean ifNull(String lineString, Function<String, Boolean> textLine) {

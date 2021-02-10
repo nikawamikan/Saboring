@@ -15,21 +15,21 @@ import java.sql.Statement;
  * @author Kamishiro
  *
  */
-public abstract class SQL_RequestCore{
+public abstract class SQL_RequestCore {
 
 	private String url;
 	private String user;
 	private String password;
 
 	/**
-	 * url,user,passwordの情報を定義してメソッドを使用可能な状態にします。
-	 * 引数なしのコンストラクタは存在しません。
-	 * @param url SQLサーバーのURL
-	 * @param user SQLを使用する際のユーザー名
+	 * url,user,passwordの情報を定義してメソッドを使用可能な状態にします。 引数なしのコンストラクタは存在しません。
+	 * 
+	 * @param url      SQLサーバーのURL
+	 * @param user     SQLを使用する際のユーザー名
 	 * @param password SQLを使用する際のユーザー名に付随するパスワード
 	 */
-	public SQL_RequestCore(String url, String user, String password) {
-		this.url = url;
+	public SQL_RequestCore(Object url, String user, String password) {
+		this.url = url.toString();
 		this.user = user;
 		this.password = password;
 	}
@@ -44,11 +44,10 @@ public abstract class SQL_RequestCore{
 	abstract protected void isFinally();
 
 	/**
-	 * 始動用メソッドです。ここには基本的に処理に処理の記述は行えません。
+	 * 始動用メソッドです。ここには基本的に処理の記述は行えません。
 	 */
 	public void start() {
-		try (Connection con = DriverManager.getConnection(url, user, password);
-				Statement st = con.createStatement()) {
+		try (Connection con = DriverManager.getConnection(url, user, password); Statement st = con.createStatement()) {
 			query(st);
 		} catch (SQLException e) {
 			isException(e);

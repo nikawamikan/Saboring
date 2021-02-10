@@ -18,10 +18,8 @@ import java.util.regex.Pattern;
  *
  * @version 0.1.1 Bate
  * @author Kamishiro
- * @param str
- *            String型変数、toStringメソッドで呼び出し可能。
- * @param i
- *            Int型変数、toIntメソッドで呼び出し可能。
+ * @param str String型変数、toStringメソッドで呼び出し可能。
+ * @param i   Int型変数、toIntメソッドで呼び出し可能。
  *
  */
 
@@ -52,8 +50,7 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * デフォルトのコンストラクタでは終了キーワード"q"でデバックメッセージありです。<br>
 	 * 第一引数に終了ワード、第二引数にデバックをBoolean型でfalseにする事ができます。
 	 *
-	 * @param debug
-	 *            デフォルトではtrueです。表示しない場合はfalseを入力します。
+	 * @param debug デフォルトではtrueです。表示しない場合はfalseを入力します。
 	 */
 	public ConsoleReaderNext(boolean debug) {
 		this("q", debug);
@@ -63,8 +60,7 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * デフォルトのコンストラクタでは終了キーワード"q"でデバックメッセージありです。<br>
 	 * 第一引数に終了ワード、第二引数にデバックをBoolean型でfalseにする事ができます。
 	 *
-	 * @param quitWord
-	 *            終了ワードです。デフォルトでは"q"です。
+	 * @param quitWord 終了ワードです。デフォルトでは"q"です。
 	 */
 	public ConsoleReaderNext(String quitWord) {
 		this(quitWord, true);
@@ -74,10 +70,8 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * デフォルトのコンストラクタでは終了キーワード"q"でデバックメッセージありです。<br>
 	 * 第一引数に終了ワード、第二引数にデバックをBoolean型でfalseにする事ができます。
 	 *
-	 * @param quitWord
-	 *            終了ワードです。デフォルトでは"q"です。
-	 * @param debug
-	 *            デフォルトではtrueです。表示しない場合はfalseを入力します。
+	 * @param quitWord 終了ワードです。デフォルトでは"q"です。
+	 * @param debug    デフォルトではtrueです。表示しない場合はfalseを入力します。
 	 */
 	public ConsoleReaderNext(String quitWord, boolean debug) {
 		if (quitWord.equals(""))
@@ -172,8 +166,7 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * @return コンソールに入力された文字列
 	 */
 	public String getString(String message) {
-		for (; (str = getStringBasic(message + System.lineSeparator()))
-				.equals("");)
+		for (; (str = getStringBasic(message + System.lineSeparator())).equals("");)
 			;
 		return str;
 	}
@@ -203,8 +196,7 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * @return 終了キーワードが入力された場合true
 	 */
 	public boolean boolAndStringBasic(String message) {
-		System.out.println(message + System.lineSeparator() + quitWord
-				+ "で終了します。");
+		System.out.println(message + System.lineSeparator() + quitWord + "で終了します。");
 		return boolAndStringBasic();
 	}
 
@@ -230,8 +222,7 @@ public class ConsoleReaderNext implements AutoCloseable {
 	public boolean boolAndString(String message) {
 		String str;
 		do {
-			System.out.println(message + System.lineSeparator() + quitWord
-					+ "で終了します。");
+			System.out.println(message + System.lineSeparator() + quitWord + "で終了します。");
 			str = getStringBasic();
 		} while (str.equals(""));
 		if (str.toLowerCase().equals(quitWord.toLowerCase()))
@@ -261,12 +252,9 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * 入力された文字列はInt型に変換されてから入力範囲値かを判定したのち、I返します。<br>
 	 * 数字以外が入力された際はもう一度入力してもらいます。
 	 *
-	 * @param message
-	 *            入力を促すメッセージ
-	 * @param min
-	 *            最小値
-	 * @param max
-	 *            最大値
+	 * @param message 入力を促すメッセージ
+	 * @param min     最小値
+	 * @param max     最大値
 	 * @return 入力された数値
 	 */
 	public int getInt(String message) {
@@ -285,12 +273,9 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * 入力された文字列はInt型に変換されてから入力範囲値かを判定したのち、I返します。<br>
 	 * 数字以外が入力された際はもう一度入力してもらいます。
 	 *
-	 * @param message
-	 *            入力を促すメッセージ
-	 * @param min
-	 *            最小値
-	 * @param max
-	 *            最大値
+	 * @param message 入力を促すメッセージ
+	 * @param min     最小値
+	 * @param max     最大値
 	 * @return 入力された数値
 	 */
 	public int getInt(String message, int min, int max) {
@@ -320,15 +305,13 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * 入力された文字列はInt型に変換されてフィールドに格納しているのでtoIntメソッドで取得します。<br>
 	 * 終了ワード以外で数字以外が入力された際はもう一度入力してもらいます。
 	 *
-	 * @param message
-	 *            入力を促すメッセージ
+	 * @param message 入力を促すメッセージ
 	 * @return 終了ワードが入力された場合true
 	 */
 	public boolean boolAndInt(String message) {
 		String str;
 		for (;;) {
-			str = getStringBasic(message + System.lineSeparator() + quitWord
-					+ "で終了します。" + System.lineSeparator());
+			str = getStringBasic(message + System.lineSeparator() + quitWord + "で終了します。" + System.lineSeparator());
 			if (str.equals(quitWord))
 				return true;
 			try {
@@ -346,12 +329,9 @@ public class ConsoleReaderNext implements AutoCloseable {
 	 * フィールドに格納しているのでtoIntメソッドで取得します。<br>
 	 * 終了ワード以外で数字以外が入力された際はもう一度入力してもらいます。
 	 *
-	 * @param message
-	 *            入力を促すメッセージ
-	 * @param min
-	 *            最小値
-	 * @param max
-	 *            最大値
+	 * @param message 入力を促すメッセージ
+	 * @param min     最小値
+	 * @param max     最大値
 	 * @return 終了ワードが入力された場合true
 	 */
 	public boolean boolAndInt(String message, int min, int max) {
@@ -369,16 +349,14 @@ public class ConsoleReaderNext implements AutoCloseable {
 	/**
 	 * YまたはNの入力を検出してBoolean型を返す為のメソッドです。
 	 *
-	 * @param message
-	 *            入力を促すメッセージ
+	 * @param message 入力を促すメッセージ
 	 * @return Yを入力した場合はTrueを返します。
 	 */
 	public boolean YorN(String message) {
 		Pattern y = Pattern.compile("[Yy]");
 		Pattern n = Pattern.compile("[Nn]");
 		for (;;) {
-			String str = getStringBasic(message + System.lineSeparator()
-					+ "[Y/n]");
+			String str = getStringBasic(message + System.lineSeparator() + "[Y/n]");
 			if (y.matcher(str).find()) {
 				return true;
 			} else if (n.matcher(str).find()) {
