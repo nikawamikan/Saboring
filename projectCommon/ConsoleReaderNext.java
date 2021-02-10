@@ -364,4 +364,5 @@ public class ConsoleReaderNext implements AutoCloseable {
 			}
 		}
 	}
+	// test git hello git world!!
 }
