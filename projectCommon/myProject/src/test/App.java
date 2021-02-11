@@ -10,5 +10,7 @@ public class App {
         mikan.getString("入力テストです。");
 
         System.out.println(mikan);
+
+        System.out.println("コンソール入力文字化け問題解決に至らず困ってるなう");
     }
 }
