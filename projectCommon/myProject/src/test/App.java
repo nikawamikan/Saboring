@@ -11,5 +11,6 @@ public class App {
 
         System.out.println(mikan);
 
+        System.out.println("mikannazinoodentabetai");
     }
 }
