@@ -10,5 +10,6 @@ public class App {
         mikan.getString("入力テストです。");
 
         System.out.println(mikan);
+
     }
 }
